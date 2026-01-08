@@ -40,8 +40,6 @@ signal.signal(signal.SIGINT, Stop)
 #front leg
 def front_lifting():
         #lifting up, after tested, found out the legs in opposite site have opposite axis, 400 is the default location at the right side, and 600 is rhe default position at the left side
-        board.bus_servo_set_position(1, [[8, 400], [17, 600]])
-        time.sleep(1)
         #lifting the same amount, for right side, lifting up is decreasing, for left side, lifting down is increasing
         board.bus_servo_set_position(1, [[8, 600], [17, 400]])
         
@@ -49,69 +47,50 @@ def front_lifting_default():
       board.bus_servo_set_position(1, [[8, 400], [17, 600]])
 
 def front_forwarding():
-      board.bus_servo_set_position(1, [[7, 500], [16, 500]])
-      time.sleep(1)
       board.bus_servo_set_position(1, [[7, 300], [16, 700]])
 
 def front_forwarding_default():
       board.bus_servo_set_position(1, [[7, 500], [16, 500]])
 
 def front_cramping():
-      board.bus_servo_set_position(1, [[9, 300], [18, 700]])
-      time.sleep(1)
       board.bus_servo_set_position(1, [[9, 100], [18, 900]])
 
 def front_cramping_default():
       board.bus_servo_set_position(1, [[9, 300], [18, 700]])
 
-
 #middle leg     
 def middle_lifting():
-        #lifting up, after tested, found out the legs in opposite site have opposite axis, 400 is the default location at the right side, and 600 is rhe default position at the left side
-        board.bus_servo_set_position(1, [[5, 400], [14, 600]])
-        time.sleep(1)
         #lifting the same amount, for right side, lifting up is decreasing, for left side, lifting down is increasing
         board.bus_servo_set_position(1, [[5, 600], [14, 400]])
 
 def middle_lifting_little():
         #lifting up, after tested, found out the legs in opposite site have opposite axis, 400 is the default location at the right side, and 600 is rhe default position at the left side
-        board.bus_servo_set_position(1, [[5, 400], [14, 600]])
-        time.sleep(1)
         #lifting the same amount, for right side, lifting up is decreasing, for left side, lifting down is increasing
-        board.bus_servo_set_position(1, [[5, 350], [14, 650]])
+        board.bus_servo_set_position(0.5, [[5, 350], [14, 650]])
         
 def middle_lifting_default():
       board.bus_servo_set_position(1, [[5, 400], [14, 600]])
 
 def middle_forwarding():
-      board.bus_servo_set_position(1, [[4, 500], [13, 500]])
-      time.sleep(1)
       board.bus_servo_set_position(1, [[4, 700], [13, 300]])
 
 def middle_forwarding2():
-      board.bus_servo_set_position(1, [[4, 500], [13, 500]])
-      time.sleep(1)
+
       board.bus_servo_set_position(1, [[4, 300], [13, 700]])
 
 def middle_forwarding_default():
       board.bus_servo_set_position(1, [[4, 500], [13, 500]])
 
 def middle_cramping():
-      board.bus_servo_set_position(1, [[6, 300], [15, 700]])
-      time.sleep(1)
+
       board.bus_servo_set_position(1, [[6, 500], [15, 500]])
 
 def middle_cramping_default():
       board.bus_servo_set_position(1, [[6, 300], [15, 700]])
 
-
-
-
 #back leg 
 def back_lifting():
-        #lifting up, after tested, found out the legs in opposite site have opposite axis, 400 is the default location at the right side, and 600 is rhe default position at the left side
-        board.bus_servo_set_position(1, [[2, 400], [11, 600]])
-        time.sleep(1)
+
         #lifting the same amount, for right side, lifting up is decreasing, for left side, lifting down is increasing
         board.bus_servo_set_position(1, [[2, 600], [11, 400]])
 
@@ -120,21 +99,18 @@ def back_lifting_default():
       board.bus_servo_set_position(1, [[2, 400], [11, 600]])
 
 def back_forwarding():
-      board.bus_servo_set_position(1, [[1, 500], [10, 500]])
-      time.sleep(1)
+
       board.bus_servo_set_position(1, [[1, 700], [10, 300]])
 
 def back_forwarding2():
-      board.bus_servo_set_position(1, [[1, 500], [10, 500]])
-      time.sleep(1)
+
       board.bus_servo_set_position(1, [[1, 300], [10, 700]])
 
 def back_forwarding_default():
       board.bus_servo_set_position(1, [[1, 500], [10, 500]])
 
 def back_cramping():
-      board.bus_servo_set_position(1, [[3, 300], [12, 700]])
-      time.sleep(1)
+
       board.bus_servo_set_position(1, [[3, 500], [12, 500]])
 
 def back_cramping_default():
@@ -184,12 +160,11 @@ def lift_push():
 
 def ripple():
             front_forwarding()
-            time.sleep(0.5)
-            middle_lifting_little()
-            time.sleep(0.5)
-            middle_lifting_default()
+            middle_lifting_little()   
             time.sleep(0.5)
             middle_forwarding2()
+            time.sleep(0.5)
+            middle_lifting_default()
             time.sleep(0.5)
             back_forwarding()
             time.sleep(0.5)
@@ -222,7 +197,17 @@ def ripple():
       
       
 
-     
+def set_all_default():
+      front_lifting_default()
+      front_forwarding_default()
+      front_cramping_default()
+      middle_lifting_default()
+      middle_forwarding_default()
+      middle_cramping_default()
+      back_lifting_default()
+      back_forwarding_default()
+      back_cramping_default()
+
      
 
 
@@ -237,6 +222,10 @@ if __name__ == '__main__':
         
     print('Assignment [0] for Group [k]')
     if True:
+          set_all_default()
+          time.sleep(2)
+
+
           ripple()
 
 
