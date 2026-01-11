@@ -38,127 +38,143 @@ def Stop(signum, frame):
 signal.signal(signal.SIGINT, Stop)
 
 #front leg
+#front leg second servo pushing downward to lift the robot body up
 def front_lifting():
-        #lifting up, after tested, found out the legs in opposite site have opposite axis, 400 is the default location at the right side, and 600 is rhe default position at the left side
-        #lifting the same amount, for right side, lifting up is decreasing, for left side, lifting down is increasing
         board.bus_servo_set_position(1, [[8, 600], [17, 400]])
-        
+
+#front leg second servo pushing downward to lift the robot body up with faster speed
+def front_lifting2():
+        board.bus_servo_set_position(0.5, [[8, 600], [17, 400]])
+
+#restore front leg second servo's default position
 def front_lifting_default():
       board.bus_servo_set_position(1, [[8, 400], [17, 600]])
 
+#restore front leg second servo's default position with faster speed
+def front_lifting_default2():
+      board.bus_servo_set_position(0.5, [[8, 400], [17, 600]])
+
+#front leg first servo moving forward
 def front_forwarding():
       board.bus_servo_set_position(1, [[7, 300], [16, 700]])
 
+#front leg first servo moving forward with faster spped
+def front_forwarding2():
+      board.bus_servo_set_position(0.5, [[7, 300], [16, 700]])
+
+#restore front leg first servo's default position
 def front_forwarding_default():
       board.bus_servo_set_position(1, [[7, 500], [16, 500]])
 
-def front_cramping():
+#restore front leg first servo's default position with faster speed
+def front_forwarding_default2():
+      board.bus_servo_set_position(0.5, [[7, 700], [16, 300]])
+
+#front leg end servo crawling inward
+def front_crawling():
       board.bus_servo_set_position(1, [[9, 100], [18, 900]])
 
-def front_cramping_default():
+#restore front leg end servo's default position
+def front_crawling_default():
       board.bus_servo_set_position(1, [[9, 300], [18, 700]])
 
 #middle leg     
+#middle leg second servo pushing downward to lift the robot body up
 def middle_lifting():
-        #lifting the same amount, for right side, lifting up is decreasing, for left side, lifting down is increasing
         board.bus_servo_set_position(1, [[5, 600], [14, 400]])
 
+#middle leg second servo pushing downward to lift the robot body up with faster speed
+def middle_lifting2():
+        board.bus_servo_set_position(0.5, [[5, 600], [14, 400]])
+
+#middle leg second servo pushing downward to lift the robot body up with less extent
 def middle_lifting_little():
-        #lifting up, after tested, found out the legs in opposite site have opposite axis, 400 is the default location at the right side, and 600 is rhe default position at the left side
-        #lifting the same amount, for right side, lifting up is decreasing, for left side, lifting down is increasing
         board.bus_servo_set_position(0.5, [[5, 350], [14, 650]])
         
+#restore middle leg second servo's default position
 def middle_lifting_default():
-      board.bus_servo_set_position(1, [[5, 400], [14, 600]])
+      board.bus_servo_set_position(0.5, [[5, 400], [14, 600]])
 
+#middle leg first servo moving backward
 def middle_forwarding():
       board.bus_servo_set_position(1, [[4, 700], [13, 300]])
 
+#middle leg first servo moving forward
 def middle_forwarding2():
-
       board.bus_servo_set_position(1, [[4, 300], [13, 700]])
 
+#middle leg first servo moving forward with faster speed
+def middle_forwarding3():
+      board.bus_servo_set_position(0.5, [[4, 300], [13, 700]])
+
+#restore middle leg first servo's default position
 def middle_forwarding_default():
       board.bus_servo_set_position(1, [[4, 500], [13, 500]])
 
-def middle_cramping():
+#restore middle leg first servo's default position with faster speed
+def middle_forwarding_default2():
+      board.bus_servo_set_position(0.5, [[4, 700], [13, 300]])
 
+#middle leg end servo crawling inward
+def middle_crawling():
       board.bus_servo_set_position(1, [[6, 500], [15, 500]])
 
-def middle_cramping_default():
+#restore middle leg end servo's default position
+def middle_crawling_default():
       board.bus_servo_set_position(1, [[6, 300], [15, 700]])
 
 #back leg 
+#back leg second servo pushing downward to lift the robot body up
 def back_lifting():
-
-        #lifting the same amount, for right side, lifting up is decreasing, for left side, lifting down is increasing
         board.bus_servo_set_position(1, [[2, 600], [11, 400]])
 
-        
+#back leg second servo pushing downward to lift the robot body up with faster speed
+def back_lifting2():
+       board.bus_servo_set_position(0.5, [[2, 700], [11, 300]])
+       
+#restore back leg second servo's default position
 def back_lifting_default():
       board.bus_servo_set_position(1, [[2, 400], [11, 600]])
 
-def back_forwarding():
+#restore back leg second servo's default position with faster speed
+def back_lifting_default2():
+      board.bus_servo_set_position(0.5, [[2, 400], [11, 600]])
 
+#back leg first servo moving backward
+def back_forwarding():
       board.bus_servo_set_position(1, [[1, 700], [10, 300]])
 
-def back_forwarding2():
+#back leg first servo moving backward with faster speed
+def back_forwarding3():
+      board.bus_servo_set_position(0.5, [[1, 700], [10, 300]])
 
+#back leg first servo moving forward
+def back_forwarding2():
       board.bus_servo_set_position(1, [[1, 300], [10, 700]])
 
+#restore back leg first servo's default position
 def back_forwarding_default():
       board.bus_servo_set_position(1, [[1, 500], [10, 500]])
 
-def back_cramping():
+#restore back leg first servo's default position with faster speed
+def back_forwarding_default2():
+      board.bus_servo_set_position(0.5, [[1, 500], [10, 500]])
 
+#back leg end servo crawling inward
+def back_crawling():
       board.bus_servo_set_position(1, [[3, 500], [12, 500]])
 
-def back_cramping_default():
+#restore back leg end servo's default position
+def back_crawling_default():
       board.bus_servo_set_position(1, [[3, 300], [12, 700]])
 
-
-def lift_push():
-        back_forwarding()
-        time.sleep(1)
-        back_lifting()
-        time.sleep(1)
-        back_cramping()
-        time.sleep(1)
-        back_forwarding_default()
-        time.sleep(1)
-        back_lifting_default()
-        time.sleep(1)
-        back_cramping_default()
-
-        time.sleep(1)
-        middle_forwarding()
-        time.sleep(1)
-        middle_lifting()
-        time.sleep(1)
-        middle_cramping()
-        time.sleep(1)
-        middle_forwarding_default()
-        time.sleep(1)
-        middle_lifting_default()
-        time.sleep(1)
-        middle_cramping_default()
-        time.sleep(1)
-
-        front_forwarding()
-        time.sleep(1)
-        front_lifting()
-        time.sleep(1)
-        front_cramping()
-        time.sleep(1)
-        front_forwarding_default()
-        time.sleep(1)
-        front_lifting_default()
-        time.sleep(1)
-        front_cramping_default()
-        time.sleep(1)     
+#restore back leg end servo's default position with faster speed
+def back_crawling_default2():
+      board.bus_servo_set_position(0.5, [[3, 300], [12, 700]])
 
 
-def ripple():
+
+def ripple_slow():
             front_forwarding()
             middle_lifting_little()   
             time.sleep(0.5)
@@ -187,30 +203,108 @@ def ripple():
 
             back_lifting()
             time.sleep(0.5)
-            back_cramping()
+            back_crawling()
             time.sleep(0.5)
             back_lifting_default()
             time.sleep(0.5)
-            back_cramping_default()
+            back_crawling_default()
             time.sleep(0.5)
             back_forwarding_default()
+
+#with faster time gap and greater range of movement
+def ripple_fast():
+            front_forwarding2()
+            middle_lifting_little()   
+            time.sleep(0.2)
+            middle_forwarding3()
+            time.sleep(0.2)
+            middle_lifting_default()
+            time.sleep(0.2)
+            back_forwarding3()
+            time.sleep(0.2)
+
+            front_lifting2()
+            time.sleep(0.2)
+            front_forwarding_default2()
+            time.sleep(0.2)
+            front_lifting_default2()
+            time.sleep(0.2)
+
+
+            middle_lifting2()
+            time.sleep(0.2)
+            middle_forwarding_default2()
+            time.sleep(0.2)
+            middle_lifting_default()
+            time.sleep(0.2)
+
+
+            back_lifting2()
+            time.sleep(0.2)
+            board.bus_servo_set_position(0.5, [[3, 250], [12, 750]])
+            back_crawling()
+            time.sleep(0.2)
+            back_lifting_default2()
+            time.sleep(0.2)
+            back_crawling_default2()
+            time.sleep(0.2)
+            back_forwarding_default2()
       
       
 
 def set_all_default():
       front_lifting_default()
       front_forwarding_default()
-      front_cramping_default()
+      front_crawling_default()
       middle_lifting_default()
       middle_forwarding_default()
-      middle_cramping_default()
+      middle_crawling_default()
       back_lifting_default()
       back_forwarding_default()
-      back_cramping_default()
+      back_crawling_default()
 
      
 
 
+def lift_push():
+        back_forwarding()
+        time.sleep(1)
+        back_lifting()
+        time.sleep(1)
+        back_crawling()
+        time.sleep(1)
+        back_forwarding_default()
+        time.sleep(1)
+        back_lifting_default()
+        time.sleep(1)
+        back_crawling_default()
+
+        time.sleep(1)
+        middle_forwarding()
+        time.sleep(1)
+        middle_lifting()
+        time.sleep(1)
+        middle_crawling()
+        time.sleep(1)
+        middle_forwarding_default()
+        time.sleep(1)
+        middle_lifting_default()
+        time.sleep(1)
+        middle_crawling_default()
+        time.sleep(1)
+
+        front_forwarding()
+        time.sleep(1)
+        front_lifting()
+        time.sleep(1)
+        front_crawling()
+        time.sleep(1)
+        front_forwarding_default()
+        time.sleep(1)
+        front_lifting_default()
+        time.sleep(1)
+        front_crawling_default()
+        time.sleep(1)    
 
 
 
@@ -221,12 +315,10 @@ if __name__ == '__main__':
 
         
     print('Assignment [0] for Group [k]')
+    set_all_default()
     if True:
-          set_all_default()
-          time.sleep(2)
+          ripple_slow()
 
-
-          ripple()
 
 
           
@@ -241,46 +333,6 @@ if __name__ == '__main__':
 
 
 
-
-    
-
-        
-        
-
-
-        #moving forward, now the left side's coordinate is not setting correctly
-        # board.bus_servo_set_position(1, [[3, 500], [12, 800]])
-        # time.sleep(1)
-        # board.bus_servo_set_position(1, [[3, 250], [12, 500]])
-        # time.sleep(1)
-        # board.bus_servo_stop([2, 3, 11, 12])
-        # time.sleep(1)
-
-        # # #moving second pair of legs
-        # #lifting
-        # board.bus_servo_set_position(1, [[5, 400], [14, 600]])
-        # time.sleep(1)
-        # board.bus_servo_set_position(1, [[5, 250], [14, 750]])
-        # time.sleep(1)
-
-        #moving forward
-        # board.bus_servo_set_position(1, [[6, 500], [15, 500]])
-        # time.sleep(1)
-        # board.bus_servo_stop([5, 6, 14, 15])
-        # time.sleep(1)
-
-        # #moving third pair of legs
-        #lifitng
-        # board.bus_servo_set_position(1, [[8, 400], [17, 600]])
-        # time.sleep(1)
-        # board.bus_servo_set_position(1, [[8, 250], [17, 750]])
-        # time.sleep(1)
-
-        #moving forward
-        # board.bus_servo_set_position(1, [[9, 500], [18, 500]])
-        # time.sleep(1)
-        # board.bus_servo_stop([8, 9, 17, 18])
-        # time.sleep(1)
 
         
         
