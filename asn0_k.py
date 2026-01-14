@@ -87,7 +87,7 @@ def middle_lifting():
 def middle_lifting2():
         board.bus_servo_set_position(0.5, [[5, 600], [14, 400]])
 
-#middle leg second servo pushing downward to lift the robot body up with less extent
+#middle leg second servo lifting up a little bit for clearance
 def middle_lifting_little():
         board.bus_servo_set_position(0.5, [[5, 350], [14, 650]])
         
@@ -311,13 +311,31 @@ def lift_push():
 
 if __name__ == '__main__':
 
-    s = sonar.Sonar()
 
-        
-    print('Assignment [0] for Group [k]')
-    set_all_default()
-    if True:
-          ripple_slow()
+      sonar_readings = []  # Stores all readings
+      s = sonar.Sonar()
+      start_time = time.time()
+      
+      while start:
+            distance = s.getDistance()
+            sonar_readings.append(distance)
+            print(f"[Sonar] {distance} mm")
+            time.sleep(0.5)
+
+      print('Assignment [0] for Group [k]')
+      set_all_default()
+
+      while True:
+
+            ripple_slow()
+            time.sleep(1)
+            ripple_fast()
+            time.sleep(1)
+            lift_push()
+            time.sleep(1)
+
+
+
 
 
 
